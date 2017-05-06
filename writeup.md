@@ -115,9 +115,18 @@ Here's an example of how the previously mentioned thresholded image would look l
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
 
-![alt text][image5]
+
+Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Histogram 
+
+![Histogram][histogram]
+
+Lane finding
+
+![Lane Finding][lane_finding]
+
+
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
