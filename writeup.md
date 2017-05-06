@@ -82,9 +82,9 @@ I used a combination of color and gradient thresholds to generate a binary image
 
 As the names imply, abs_sobel_thresh() computes the thresholding based on the absolute value of the gradient, either in the x or the y direction. The sobel_mag_threshold() thresholds based on the magnitude of the threashold in both the x and y directions (norm of the two). The dir_threshold() method calculates the direction of the gradient, and calculates the threshold based on that. The combined_threshold() method combines these various other methods into the thresholding pipeline. It is this method that will be described below.
 
+The combined_threshold() method first converts the RGB image to both grayscale and to the HLS colorspace. The grayscale image is used to apply the Sobel transforms to find absolute, magnitude and direction thresholds, while the HLS image is used to determine saturation and lightness thresholds. Saturation is a better measure of whether a pixel is or isn't a lane line, since it's dependent on the intensity of the color, rather than on the exact color. The same goes for lightness and hue in the HLS color space. After multiple experiments, I ended up ignoring the gradient magnitude and direction, and ended up using x- and y-direction Sobel thresholds, as well as saturation and lightness thresholds. The thresholds themselves were selected based on how well the thresholding would preprocess the image for polynomial curve fitting and identifying the lane lines later on.
 
-
-(thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+Here's an example of a thresholded image. Note that the continuous lane line on the left (originally in yellow in the RGB image) and the broken white lane line on the right are clearly visible.
 
 ![Thresholded Image][thresholded]
 
