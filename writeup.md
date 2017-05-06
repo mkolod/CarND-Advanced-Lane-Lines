@@ -91,6 +91,14 @@ Here's an example of a thresholded image. Note that the continuous lane line on 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
+To generate the perspective transform, we first need a perspective matrix from the source and destinations points. These points (referenced by variables src and dst) are provided to the LanePipeline constructor in cell #4 of the IPython notebook. We first save src and dst as fields of the LanePipeline object, then get the transform:
+
+    self.M = cv2.getPerspectiveTransform(self.perspective_src, self.perspective_dst)
+
+We also store the inverse transform so as to be able to return to the original perspective:
+
+    self.Minv = cv2.getPerspectiveTransform(self.perspective_dst, self.perspective_src)
+
 The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
 
 ```python
