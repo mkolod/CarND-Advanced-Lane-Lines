@@ -62,7 +62,14 @@ Undistorting the chessboard images can be seen by comparing the images below. Th
 #### 1. Provide an example of a distortion-corrected image.
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+![Original Image][original_image]
+
+Here's the undistorted version:
+
+![Corrected Camera Distortion][corrected_camera_distortion]
+
+Note that after the correction, the white car on the right is closer than in the undistorted image. This is reminiscent of the phenomenon described by warning signs on side mirrors: "Objects in mirror are closer than they appear."
+
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
