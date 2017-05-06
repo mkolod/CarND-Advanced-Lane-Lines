@@ -74,7 +74,15 @@ Note that after the correction, the white car on the right is closer than in the
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
 I used a combination of color and gradient thresholds to generate a binary image. The code can be found in cell #4 of the IPython notebook, in the following methods (discussed below):
-  - 
+
+  - abs_sobel_thresh()
+  - sobel_mag_thresh()
+  - dir_threshold()
+  - combined_threshold()
+
+As the names imply, abs_sobel_thresh() computes the thresholding based on the absolute value of the gradient, either in the x or the y direction. The sobel_mag_threshold() thresholds based on the magnitude of the threashold in both the x and y directions (norm of the two). The dir_threshold() method calculates the direction of the gradient, and calculates the threshold based on that. The combined_threshold() method combines these various other methods into the thresholding pipeline. It is this method that will be described below.
+
+
 
 (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
 
