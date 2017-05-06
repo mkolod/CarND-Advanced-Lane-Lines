@@ -68,7 +68,7 @@ Here's the undistorted version:
 
 ![Corrected Camera Distortion][corrected_camera_distortion]
 
-Note that after the correction, the white car on the right is closer than in the undistorted image. This is reminiscent of the phenomenon described by warning signs on side mirrors: "Objects in mirror are closer than they appear."
+Note that after the correction, the white car on the right is closer than in the undistorted image. This is reminiscent of the phenomenon described by warning signs on side mirrors: [Objects in mirror are closer than they appear](https://en.wikipedia.org/wiki/Objects_in_mirror_are_closer_than_they_appear).
 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
