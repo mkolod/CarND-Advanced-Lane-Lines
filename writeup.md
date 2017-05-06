@@ -136,7 +136,9 @@ I did this in lines # through # in my code in `my_other_file.py`
 
 I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
 
-![alt text][image6]
+![Final Lane][final_lane]
+
+![Final Lane with Curvature Info][hud]
 
 ---
 
