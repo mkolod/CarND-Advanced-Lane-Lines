@@ -125,7 +125,7 @@ Here's an example of such a histogram, stacked below the warped thresholded imag
 
 After obtaining the histogram for where the points are concentrated, we can start searching for the lane points more finely, by using the sliding window technique. We can start with a rectangle with a height of, say, 1/9th of the image, centered around the pixels which had the highest peaks on the left and right hand sides of the image, and then work our way up the image. As we need to the next set of rows in the image (the next step in the sliding window) and have enough points to get a good estimate of the new center (say 50 points), we can re-center the window for the next step so as to follow the curved lane markers. This is done in the `for window in range(nwindows)` loop in the find_lines_histogram() method mentioned above.
 
-Once we found all the points that seem to belong to lane lines, we can fit a second-degree polynomial using NumPy's polyfit() method. The polyfit() call gives us the coefficients for the various degrees of the polynomial. This is done towards the end of the find_lines_histogram() method, right before returning the results. We can also plot the sliding windows, and the pixels that go through the center of the point cloud for both the left and right lanes, which represent the least-squared polynomial fit. Here's an example of how that might look like.
+Once we found all the points that seem to belong to lane lines, we can fit a second-degree polynomial using NumPy's polyfit() method. The polyfit() call gives us the coefficients for the various degrees of the polynomial. This is done towards the end of the find_lines_histogram() method, right before returning the results. We can also plot the sliding windows, and the pixels that go through the center of the point cloud for both the left and right lanes, which represent the least-squared polynomial fit. Here's an example of how that might look like. The green boundaries represent the boxes that delineate the boundary for the sliding window point search, and the yellow curves represent the polynomial fits for the left and right lanes.
 
 ![Lane Finding][lane_finding]
 
@@ -133,7 +133,27 @@ Once we found all the points that seem to belong to lane lines, we can fit a sec
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+The radius of the curvature was calculated in the curvature() method of the LanePipeline class in cell #4 of the IPython notebook. Note that by then, we will have fit the second-order polynomial to the points we think represent the left and right lane markers. Let's think about the polynomial first
+
+\\[ f(y) = Ay^2+By+C\\]
+
+Note that it's specified in terms of y, not x, because the lines can be pretty close to vertical, and so it would be possible to get 2 different values as a function of x, so it's safer to model in terms of y here. 
+
+As explained [here](http://www.intmath.com/applications-differentiation/8-radius-curvature.php), the radius of the curvature can be calculated as follows 
+\\[ R_{curve} = {\left(1 + \left({dx \over dy}\right)^2\right)^{3/2}} \over \left| {d^2x \over dy^2} \right| \\]
+
+which, given the derivatives
+
+\\[ {dx \over dy} = 2Ay+B \\]
+
+\\[ {d^2x \over dy^2} = 2A \\]
+
+can be simplified to 
+
+\\[ R_{curve} = {(1 + (2Ay + B)^2)^{3/2} \over \left|2A\right| } \\]
+
+
+
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
