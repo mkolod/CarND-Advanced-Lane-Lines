@@ -135,8 +135,9 @@ Once we found all the points that seem to belong to lane lines, we can fit a sec
 
 The radius of the curvature was calculated in the curvature() method of the LanePipeline class in cell #4 of the IPython notebook. Note that by then, we will have fit the second-order polynomial to the points we think represent the left and right lane markers. Let's think about the polynomial first
 
+```tex
 \\[ f(y) = Ay^2+By+C\\]
-
+```
 Note that it's specified in terms of y, not x, because the lines can be pretty close to vertical, and so it would be possible to get 2 different values as a function of x, so it's safer to model in terms of y here. 
 
 As explained [here](http://www.intmath.com/applications-differentiation/8-radius-curvature.php), the radius of the curvature can be calculated as follows 
