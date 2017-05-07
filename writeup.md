@@ -123,6 +123,8 @@ Here's an example of such a histogram, stacked below the warped thresholded imag
 
 ![Histogram][histogram]
 
+After obtaining the histogram for where the points are concentrated, we can start searching for the lane points more finely, by using the sliding window technique. We can start with a rectangle with a height of, say, 1/9th of the image, centered around the pixels which had the highest peaks on the left and right hand sides of the image, and then work our way up the image. When the center of the concentration of the points in the rectangle shifts, we shift the rectangle for the subsequent sliding window, to ensure that we're tracking the points, since the road may be curved rather than straight. This is done in the `for window in range(nwindows)` loop in the find_lines_histogram() method mentioned above.
+
 ==========
 Lane finding
 
