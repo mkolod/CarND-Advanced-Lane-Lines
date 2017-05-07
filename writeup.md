@@ -151,7 +151,7 @@ As you can see in the code of the cuvature() method, the calculations assigned t
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+The lanes are drawn on the original undistorted image in the method called draw_lane(), which belongs to the LanePipeline class, found in cell #4 of the IPython notebok. This method takes the warped image with identified lane lines, fills a polygon between the identified lines (to color the full extent of the road, in this case in green), unwarps the warp perspective back into the original perspective of the undistorted image, and combines the two images so as to color the lane, as an overlay on top of the undistorted image. Here I show two examples, the first one with the lane identified, and the second one with an additional "head-up display" showing the curvature of the left lane marker, the right lane marker, and the displacement from the center of the lane.
 
 ![Final Lane][final_lane]
 
