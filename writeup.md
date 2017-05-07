@@ -123,10 +123,9 @@ Here's an example of such a histogram, stacked below the warped thresholded imag
 
 ![Histogram][histogram]
 
-After obtaining the histogram for where the points are concentrated, we can start searching for the lane points more finely, by using the sliding window technique. We can start with a rectangle with a height of, say, 1/9th of the image, centered around the pixels which had the highest peaks on the left and right hand sides of the image, and then work our way up the image. When the center of the concentration of the points in the rectangle shifts, we shift the rectangle for the subsequent sliding window, to ensure that we're tracking the points, since the road may be curved rather than straight. This is done in the `for window in range(nwindows)` loop in the find_lines_histogram() method mentioned above.
+After obtaining the histogram for where the points are concentrated, we can start searching for the lane points more finely, by using the sliding window technique. We can start with a rectangle with a height of, say, 1/9th of the image, centered around the pixels which had the highest peaks on the left and right hand sides of the image, and then work our way up the image. As we need to the next set of rows in the image (the next step in the sliding window) and have enough points to get a good estimate of the new center (say 50 points), we can re-center the window for the next step so as to follow the curved lane markers. This is done in the `for window in range(nwindows)` loop in the find_lines_histogram() method mentioned above.
 
-==========
-Lane finding
+Once we found all the points that seem to belong to lane lines, we can fit a second-degree polynomial using NumPy's polyfit() method. The polyfit() call gives us the coefficients for the various degrees of the polynomial. This is done towards the end of the find_lines_histogram() method, right before returning the results. We can also plot the sliding windows, and the pixels that go through the center of the point cloud for both the left and right lanes, which represent the least-squared polynomial fit. Here's an example of how that might look like.
 
 ![Lane Finding][lane_finding]
 
