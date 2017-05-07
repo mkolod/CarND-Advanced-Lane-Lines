@@ -146,7 +146,7 @@ As explained [here](http://www.intmath.com/applications-differentiation/8-radius
 R_curve = [(1 + (2Ay+B)^2)^(3/2)] / |2A|
 ```
 
-As you can see in the code of the cuvature() method, the calculations assigned to the variables left_curverad and right_curverad achieve precisely that.
+As you can see in the code of the cuvature() method, the calculations assigned to the variables left_curverad and right_curverad achieve precisely that. However, note also that to calculate the radius in real-world measurements (meters) as opposed to on-screen measurements (pixels), we needed to recompute the polynomial coefficients based on a representation that's already in meters rather than pixels. That's the reason why we have the polyfit() calls right before the left_curverad and right_curverad calculations - these fits are based on a rescaling of pixels to meters, at a rate of 30/720 meters per pixel in the y dimension (ym_per_pix) and 3.7/700 meters per pixel in the x direction (xm_per_pix). Given these recomputed polynomial coefficients, we can perform the above-mentioned curve radius calculation (R_curve formula above).
 
 
 
