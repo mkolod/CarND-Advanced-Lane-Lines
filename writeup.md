@@ -115,12 +115,13 @@ Here's an example of how the previously mentioned thresholded image would look l
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
+First, the key is to determine the search area in the image where one can find a cluster of pixels belonging to a lane line. Since lane lines are either straight-vertical or curved, it makes sense to find peaks in the histogram when summing the count of pixels that passed thresholding in the previous step. The peaks should then identify the candidate area in which to start searching. The method calculating the histogram is called find_lines_histogram() and can be found in cell #4 of the IPython notebook, as part of the LanePipeling class.
 
+Here's an example of such a histogram, stacked below the warped thresholded image. As we line them up, we can see that the histogram found a good candidate of where the lane points are concentrated.
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
-Histogram 
-
+![Warped Perspective][warped]
 ![Histogram][histogram]
+
 
 Lane finding
 
