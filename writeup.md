@@ -120,9 +120,10 @@ First, the key is to determine the search area in the image where one can find a
 Here's an example of such a histogram, stacked below the warped thresholded image. As we line them up, we can see that the histogram found a good candidate of where the lane points are concentrated.
 
 ![Warped Perspective][warped]
+
 ![Histogram][histogram]
 
-
+==========
 Lane finding
 
 ![Lane Finding][lane_finding]
