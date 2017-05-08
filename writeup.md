@@ -46,7 +46,7 @@ You're reading it!
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
-The code for this step is contained in the cell #4 of the IPython notebook located in ./pipeline.ipynb. The method in question is called _calibrate_camera().
+The code for this step is contained in the cell #22of the IPython notebook located in ./pipeline.ipynb. The method in question is called _calibrate_camera().
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
 
@@ -73,7 +73,7 @@ Note that after the correction, the white car on the right is closer than in the
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image. The code can be found in cell #4 of the IPython notebook, in the following methods (discussed below):
+I used a combination of color and gradient thresholds to generate a binary image. The code can be found in cell #22 of the IPython notebook, in the following methods (discussed below):
 
   - abs_sobel_thresh()
   - sobel_mag_thresh()
@@ -91,7 +91,7 @@ Here's an example of a thresholded image. Note that the continuous lane line on 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-To generate the perspective transform, we first need a perspective matrix from the source and destinations points. These points (referenced by variables src and dst) are provided to the LanePipeline constructor in cell #4 of the IPython notebook. We first save src and dst as fields of the LanePipeline object, then get the transform:
+To generate the perspective transform, we first need a perspective matrix from the source and destinations points. These points (referenced by variables src and dst) are provided to the LanePipeline constructor in cell #2 of the IPython notebook. We first save src and dst as fields of the LanePipeline object, then get the transform:
 
     self.M = cv2.getPerspectiveTransform(self.perspective_src, self.perspective_dst)
 
@@ -115,7 +115,7 @@ Here's an example of how the previously mentioned thresholded image would look l
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-First, the key is to determine the search area in the image where one can find a cluster of pixels belonging to a lane line. Since lane lines are either straight-vertical or curved, it makes sense to find peaks in the histogram when summing the count of pixels that passed thresholding in the previous step. The peaks should then identify the candidate area in which to start searching. The method calculating the histogram is called find_lines_histogram() and can be found in cell #4 of the IPython notebook, as part of the LanePipeling class.
+First, the key is to determine the search area in the image where one can find a cluster of pixels belonging to a lane line. Since lane lines are either straight-vertical or curved, it makes sense to find peaks in the histogram when summing the count of pixels that passed thresholding in the previous step. The peaks should then identify the candidate area in which to start searching. The method calculating the histogram is called find_lines_histogram() and can be found in cell #2 of the IPython notebook, as part of the LanePipeling class.
 
 Here's an example of such a histogram, stacked below the warped thresholded image. As we line them up, we can see that the histogram found a good candidate of where the lane points are concentrated.
 
@@ -133,7 +133,7 @@ Once we found all the points that seem to belong to lane lines, we can fit a sec
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-The radius of the curvature was calculated in the curvature() method of the LanePipeline class in cell #4 of the IPython notebook. Note that by then, we will have fit the second-order polynomial to the points we think represent the left and right lane markers. Let's think about the polynomial first
+The radius of the curvature was calculated in the curvature() method of the LanePipeline class in cell #2 of the IPython notebook. Note that by then, we will have fit the second-order polynomial to the points we think represent the left and right lane markers. Let's think about the polynomial first
 
 ```math
 f(y) = Ay^2+By+C
@@ -151,7 +151,7 @@ As you can see in the code of the cuvature() method, the calculations assigned t
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-The lanes are drawn on the original undistorted image in the method called draw_lane(), which belongs to the LanePipeline class, found in cell #4 of the IPython notebok. This method takes the warped image with identified lane lines, fills a polygon between the identified lines (to color the full extent of the road, in this case in green), unwarps the warp perspective back into the original perspective of the undistorted image, and combines the two images so as to color the lane, as an overlay on top of the undistorted image. Here I show two examples, the first one with the lane identified, and the second one with an additional "head-up display" showing the curvature of the left lane marker, the right lane marker, and the displacement from the center of the lane.
+The lanes are drawn on the original undistorted image in the method called draw_lane(), which belongs to the LanePipeline class, found in cell #2 of the IPython notebok. This method takes the warped image with identified lane lines, fills a polygon between the identified lines (to color the full extent of the road, in this case in green), unwarps the warp perspective back into the original perspective of the undistorted image, and combines the two images so as to color the lane, as an overlay on top of the undistorted image. Here I show two examples, the first one with the lane identified, and the second one with an additional "head-up display" showing the curvature of the left lane marker, the right lane marker, and the displacement from the center of the lane.
 
 ![Final Lane][final_lane]
 
