@@ -46,7 +46,7 @@ You're reading it!
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
-The code for this step is contained in the cell #22of the IPython notebook located in ./pipeline.ipynb. The method in question is called _calibrate_camera().
+The code for this step is contained in the cell #2 of the IPython notebook located in ./pipeline.ipynb. The method in question is called _calibrate_camera().
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
 
@@ -73,7 +73,7 @@ Note that after the correction, the white car on the right is closer than in the
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image. The code can be found in cell #22 of the IPython notebook, in the following methods (discussed below):
+I used a combination of color and gradient thresholds to generate a binary image. The code can be found in cell #2 of the IPython notebook, in the following methods (discussed below):
 
   - abs_sobel_thresh()
   - sobel_mag_thresh()
